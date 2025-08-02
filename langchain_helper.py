@@ -1,14 +1,20 @@
-from langchain.vectorstores import FAISS
-from langchain.llms import GooglePalm
-from langchain.document_loaders.csv_loader import CSVLoader
-from langchain.embeddings import HuggingFaceInstructEmbeddings
+# from langchain.vectorstores import FAISS
+# from langchain.llms import GooglePalm
+# from langchain.document_loaders.csv_loader import CSVLoader
+# from langchain.embeddings import HuggingFaceInstructEmbeddings
+# from langchain.prompts import PromptTemplate
+from langchain_community.vectorstores import FAISS
+from langchain_community.llms import GooglePalm
+from langchain_community.document_loaders import CSVLoader
+from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain.prompts import PromptTemplate
 
 from langchain.chains import RetrievalQA
 import os
 
 from dotenv import load_dotenv
-load_dotenv()  # take environment variables from .env (especially openai api key)
+load_dotenv(dotenv_path="/Users/mrote/ai stuff/ecommerce_qna_system/.env")
+  # take environment variables from .env (especially openai api key)
 
 # Create Google Palm LLM model
 llm = GooglePalm(google_api_key=os.environ["GOOGLE_API_KEY"], temperature=0.1)
